@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+<link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#120c0b">
+<title>Shopping Bag | AURÈLE — Maison de Parfum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#120c0b;--wine:#2a1414;--champagne:#d9c3a0;--bone:#efe7db;--muted:#a39687;
+--line:rgba(217,195,160,.22);--display:'Bodoni Moda',serif;--body:'Figtree',sans-serif}
+*{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
+body{min-height:100vh;background:var(--ink);color:var(--bone);font-family:var(--body);font-weight:300;line-height:1.6}
+button,a{font:inherit}a{color:inherit;text-decoration:none}button{cursor:pointer}
+.header{padding:1.6rem 4vw;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:var(--display);font-size:1.7rem;letter-spacing:.08em}
+.back{color:var(--champagne);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
+.wrap{width:min(1100px,88vw);margin:64px auto 90px}
+.eyebrow{color:var(--champagne);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase}
+h1{margin:14px 0 10px;font:400 clamp(2.6rem,6vw,5rem)/1 var(--display)}
+.intro{color:var(--muted);margin-bottom:42px}
+.layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(270px,.8fr);gap:42px;align-items:start}
+.items{border-top:1px solid var(--line)}
+.item{display:grid;grid-template-columns:100px minmax(0,1fr) auto;gap:20px;padding:24px 0;border-bottom:1px solid var(--line);align-items:center}
+.mono{height:120px;display:grid;place-items:center;border:1px solid var(--line);font:400 2.6rem var(--display);color:rgba(217,195,160,.8);background:radial-gradient(ellipse at 50% 35%,rgba(147,85,63,.34),transparent 60%),linear-gradient(150deg,#351a1a,#140c0b)}
+.item h2{margin:0 0 6px;font:400 1.5rem var(--display)}
+.item p{color:var(--muted);font-size:.85rem;margin-bottom:14px}
+.price{color:var(--champagne);white-space:nowrap;font:400 1.2rem var(--display)}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line)}
+.qty button{width:34px;height:34px;background:none;color:var(--bone);border:0}
+.qty output{min-width:30px;text-align:center;font-size:.85rem}
+.remove{margin-left:12px;border:0;background:none;color:var(--muted);text-decoration:underline;font-size:.78rem}
+.summary{background:#1a1110;border:1px solid var(--line);padding:28px;position:sticky;top:24px}
+.summary h2{margin-bottom:24px;font:400 1.8rem var(--display)}
+.line{display:flex;justify-content:space-between;gap:16px;margin:16px 0;color:var(--muted);font-size:.9rem}
+.line.total{padding-top:18px;border-top:1px solid var(--line);color:var(--bone)}
+.line.total strong{color:var(--champagne);font:400 1.4rem var(--display)}
+.checkout{width:100%;border:1px solid var(--champagne);background:var(--champagne);color:var(--ink);padding:16px 12px;letter-spacing:.1em;text-transform:uppercase;margin-top:12px;transition:background .3s,color .3s}
+.checkout:hover{background:transparent;color:var(--champagne)}
+.note{color:var(--muted);font-size:.75rem;text-align:center;margin-top:12px}
+.status{color:var(--champagne);min-height:1.2em;font-size:.85rem;margin-top:12px}
+.empty{padding:60px 20px;text-align:center;border:1px solid var(--line)}
+.empty h2{font:400 2rem var(--display);margin-bottom:12px}
+.empty p{color:var(--muted);margin-bottom:24px}
+.shop{display:inline-block;padding:13px 22px;border:1px solid var(--champagne);color:var(--champagne);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+footer{padding:25px 4vw;border-top:1px solid var(--line);color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;gap:20px}
+@media(max-width:720px){.wrap{margin-top:42px}.layout{grid-template-columns:1fr;gap:26px}
+.item{grid-template-columns:76px minmax(0,1fr);gap:14px}.mono{height:100px}
+.item-end{grid-column:2}.summary{position:static}footer{flex-direction:column}}
+</style>
+</head>
+<body>
+  
+<div class="custom-cursor">
+  <span></span>
+</div>
+
+<header class="header">
+  <a class="brand" href="index.html" aria-label="Aurèle home">Aurèle</a>
+  <a class="back" href="index.html#collection">← Continue shopping</a>
+</header>
+<main class="wrap">
+  <div class="eyebrow">Your selection</div>
+  <h1>Shopping Bag</h1>
+  <p class="intro">A considered collection of scents, selected just for you.</p>
+  <div id="cart-content" class="layout">
+    <section id="cart-items" class="items" aria-label="Items in your shopping bag" aria-live="polite"></section>
+    <aside class="summary" aria-label="Order summary">
+      <h2>Order Summary</h2>
+      <div class="line"><span>Subtotal</span><span id="subtotal">Rs 0</span></div>
+      <div class="line"><span>Delivery</span><span>Calculated at checkout</span></div>
+      <div class="line total"><span>Total</span><strong id="total">Rs 0</strong></div>
+      <button class="checkout" id="checkout" type="button">Continue to checkout</button>
+      <p class="note">Totals are shown in Pakistani Rupees (PKR).</p>
+      <p class="status" id="status" role="status"></p>
+    </aside>
+  </div>
+  <section class="empty" id="empty-state" hidden>
+    <h2>Your bag is waiting.</h2>
+    <p>Discover a fragrance that feels unmistakably yours.</p>
+    <a class="shop" href="index.html#collection">Explore the collection</a>
+  </section>
+</main>
+<footer><span>© Aurèle — Maison de Parfum</span><span>Crafted to leave a lasting impression.</span></footer>
+<script>
+(() => {
+    const KEY = 'aurele-shopping-bag-v1';
+
+    const $ = id => document.getElementById(id);
+
+    const money = n =>
+        'Rs ' + Math.round(Number(n)).toLocaleString('en-PK');
+
+    const slug = s =>
+        s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+
+    function read() {
+        try {
+            const data = JSON.parse(
+                localStorage.getItem(KEY) || '[]'
+            );
+
+            if (!Array.isArray(data)) return [];
+
+            return data
+                .filter(item =>
+                    item &&
+                    typeof item.name === 'string' &&
+                    Number(item.price) > 0 &&
+                    Number.isInteger(Number(item.qty)) &&
+                    Number(item.qty) > 0
+                )
+                .map(item => ({
+                    id: typeof item.id === 'string'
+                        ? item.id
+                        : slug(item.name),
+
+                    name: item.name,
+                    price: Number(item.price),
+                    qty: Number(item.qty)
+                }));
+
+        } catch (error) {
+            console.error('AURÈLE cart error:', error);
+            return [];
+        }
+    }
+
+
+    let cart = read();
+
+
+    function save() {
+        try {
+            localStorage.setItem(
+                KEY,
+                JSON.stringify(cart)
+            );
+        } catch {
+            $('status').textContent =
+                'Your browser could not save the bag.';
+        }
+    }
+
+
+    function el(tag, cls, text) {
+        const element =
+            document.createElement(tag);
+
+        if (cls) {
+            element.className = cls;
+        }
+
+        if (text !== undefined) {
+            element.textContent = text;
+        }
+
+        return element;
+    }
+
+
+    function render() {
+
+        const list = $('cart-items');
+
+        list.replaceChildren();
+
+        const hasItems = cart.length > 0;
+
+        $('cart-content').hidden = !hasItems;
+        $('empty-state').hidden = hasItems;
+
+        let sum = 0;
+
+
+        cart.forEach((item, index) => {
+
+            sum += item.price * item.qty;
+
+
+            const row =
+                el('article', 'item');
+
+
+            const mono =
+                el('div', 'mono', 'A');
+
+            mono.setAttribute(
+                'aria-hidden',
+                'true'
+            );
+
+
+            const info =
+                el('div');
+
+
+            const title =
+                el(
+                    'h2',
+                    '',
+                    item.name
+                );
+
+
+            const description =
+                el(
+                    'p',
+                    '',
+                    'AURÈLE · Eau de Parfum'
+                );
+
+
+            const qty =
+                el('div', 'qty');
+
+
+            const minus =
+                el('button', '', '−');
+
+            minus.type = 'button';
+
+            minus.setAttribute(
+                'aria-label',
+                'Decrease ' + item.name + ' quantity'
+            );
+
+            minus.addEventListener(
+                'click',
+                () => change(index, -1)
+            );
+
+
+            const output =
+                el(
+                    'output',
+                    '',
+                    item.qty
+                );
+
+
+            const plus =
+                el('button', '', '+');
+
+            plus.type = 'button';
+
+            plus.disabled =
+                item.qty >= 99;
+
+            plus.setAttribute(
+                'aria-label',
+                'Increase ' + item.name + ' quantity'
+            );
+
+            plus.addEventListener(
+                'click',
+                () => change(index, 1)
+            );
+
+
+            qty.append(
+                minus,
+                output,
+                plus
+            );
+
+
+            const remove =
+                el(
+                    'button',
+                    'remove',
+                    'Remove'
+                );
+
+            remove.type = 'button';
+
+            remove.addEventListener(
+                'click',
+                () => {
+
+                    cart.splice(index, 1);
+
+                    save();
+
+                    render();
+
+                    $('status').textContent =
+                        'Item removed from your bag.';
+                }
+            );
+
+
+            info.append(
+                title,
+                description,
+                qty,
+                remove
+            );
+
+
+            const end =
+                el('div', 'item-end');
+
+
+            const price =
+                el(
+                    'div',
+                    'price',
+                    money(item.price * item.qty)
+                );
+
+
+            end.append(price);
+
+
+            row.append(
+                mono,
+                info,
+                end
+            );
+
+
+            list.append(row);
+
+        });
+
+
+        $('subtotal').textContent =
+            money(sum);
+
+        $('total').textContent =
+            money(sum);
+
+    }
+
+
+    function change(index, amount) {
+
+        if (!cart[index]) return;
+
+
+        cart[index].qty += amount;
+
+
+        if (cart[index].qty <= 0) {
+
+            cart.splice(index, 1);
+
+        }
+
+
+        save();
+
+        render();
+
+    }
+
+
+    $('checkout').addEventListener(
+        'click',
+        () => {
+
+            if (!cart.length) {
+
+                $('status').textContent =
+                    'Your bag is empty.';
+
+                return;
+            }
+
+
+            window.location.href =
+                'checkout.html';
+
+        }
+    );
+
+
+    render();
+
+})();
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#120c0b">
+
+    <title>Your Orders | AURÈLE — Maison de Parfum</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #120c0b;
+            --ink-2: #1a1110;
+            --wine: #2a1414;
+            --wine-2: #4a171b;
+            --champagne: #d9c3a0;
+            --bone: #efe7db;
+            --muted: #a39687;
+            --line: rgba(217,195,160,.18);
+
+            --display: 'Bodoni Moda', serif;
+            --body: 'Figtree', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(106,37,41,.18),
+                    transparent 34%
+                ),
+                var(--ink);
+
+            color: var(--bone);
+            font-family: var(--body);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* HEADER */
+
+        .header {
+            height: 88px;
+            padding: 0 5vw;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border-bottom: 1px solid var(--line);
+
+            background: rgba(18,12,11,.82);
+            backdrop-filter: blur(16px);
+        }
+
+        .brand {
+            font-family: var(--display);
+            font-size: 1.75rem;
+            letter-spacing: .12em;
+        }
+
+        .back {
+            color: var(--champagne);
+            font-size: .72rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        /* PAGE */
+
+        .page {
+            width: min(950px, 88vw);
+            margin: 85px auto 110px;
+        }
+
+        .hero {
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: var(--champagne);
+            font-size: .66rem;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+        }
+
+        .check {
+            width: 72px;
+            height: 72px;
+
+            margin: 25px auto;
+
+            border: 1px solid var(--champagne);
+            border-radius: 50%;
+
+            display: grid;
+            place-items: center;
+
+            color: var(--champagne);
+
+            font-family: var(--display);
+            font-size: 1.6rem;
+
+            box-shadow:
+                0 0 0 10px rgba(217,195,160,.025);
+        }
+
+        .hero h1 {
+            font-family: var(--display);
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .hero p {
+            max-width: 560px;
+            margin: 20px auto 0;
+
+            color: var(--muted);
+            font-size: .92rem;
+        }
+
+        /* ORDER CARD */
+
+        .order-card {
+            margin-top: 55px;
+
+            border: 1px solid var(--line);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(74,23,27,.24),
+                    rgba(26,17,16,.92)
+                );
+        }
+
+        .order-top {
+            padding: 27px 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+
+            border-bottom: 1px solid var(--line);
+        }
+
+        .order-label {
+            color: var(--muted);
+            font-size: .65rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
+        .order-id {
+            margin-top: 4px;
+
+            color: var(--champagne);
+            font-family: var(--display);
+            font-size: 1.25rem;
+        }
+
+        .status {
+            padding: 8px 13px;
+
+            border: 1px solid rgba(217,195,160,.28);
+
+            color: var(--champagne);
+
+            font-size: .62rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        /* ITEMS */
+
+        .items {
+            padding: 5px 30px;
+        }
+
+        .item {
+            padding: 22px 0;
+
+            display: grid;
+            grid-template-columns: 65px 1fr auto;
+            align-items: center;
+            gap: 17px;
+
+            border-bottom: 1px solid var(--line);
+        }
+
+        .visual {
+            width: 65px;
+            height: 78px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--line);
+
+            background:
+                radial-gradient(
+                    ellipse at 50% 35%,
+                    rgba(147,85,63,.34),
+                    transparent 62%
+                ),
+                linear-gradient(
+                    150deg,
+                    #351a1a,
+                    #140c0b
+                );
+
+            color: rgba(217,195,160,.8);
+
+            font-family: var(--display);
+            font-size: 1.5rem;
+        }
+
+        .item h2 {
+            font-family: var(--display);
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+        .item p {
+            margin-top: 3px;
+            color: var(--muted);
+            font-size: .73rem;
+        }
+
+        .item-price {
+            color: var(--champagne);
+            font-family: var(--display);
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        /* TOTAL */
+
+        .total {
+            padding: 25px 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-bottom: 1px solid var(--line);
+        }
+
+        .total span {
+            color: var(--muted);
+            font-size: .76rem;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+        }
+
+        .total strong {
+            color: var(--champagne);
+            font-family: var(--display);
+            font-size: 1.65rem;
+            font-weight: 400;
+        }
+
+        /* DELIVERY */
+
+        .delivery {
+            margin-top: 40px;
+            padding: 30px;
+
+            border: 1px solid var(--line);
+        }
+
+        .delivery h2 {
+            margin-bottom: 22px;
+
+            font-family: var(--display);
+            font-size: 1.7rem;
+            font-weight: 400;
+        }
+
+        .delivery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .delivery-label {
+            color: var(--muted);
+            font-size: .62rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .delivery-value {
+            margin-top: 4px;
+            font-size: .88rem;
+        }
+
+        .delivery-full {
+            grid-column: 1 / -1;
+        }
+
+        /* TIMELINE */
+
+        .timeline {
+            margin-top: 40px;
+            padding: 30px;
+
+            border-top: 1px solid var(--line);
+        }
+
+        .timeline h2 {
+            font-family: var(--display);
+            font-size: 1.7rem;
+            font-weight: 400;
+        }
+
+        .steps {
+            margin-top: 30px;
+
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+
+        .step {
+            position: relative;
+            text-align: center;
+        }
+
+        .step:not(:last-child)::after {
+            content: "";
+
+            position: absolute;
+
+            top: 10px;
+            left: calc(50% + 12px);
+            width: calc(100% - 24px);
+
+            height: 1px;
+
+            background: var(--line);
+        }
+
+        .dot {
+            width: 20px;
+            height: 20px;
+
+            margin: 0 auto 11px;
+
+            border: 1px solid var(--line);
+            border-radius: 50%;
+
+            background: var(--ink);
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .step.active .dot {
+            border-color: var(--champagne);
+            background: var(--champagne);
+        }
+
+        .step strong {
+            display: block;
+
+            font-size: .68rem;
+            font-weight: 400;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .step span {
+            display: block;
+
+            margin-top: 4px;
+
+            color: var(--muted);
+            font-size: .66rem;
+        }
+
+        /* ACTIONS */
+
+        .actions {
+            margin-top: 45px;
+
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .action {
+            padding: 13px 23px;
+
+            border: 1px solid var(--champagne);
+
+            color: var(--champagne);
+
+            font-size: .7rem;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+
+            transition: .3s ease;
+        }
+
+        .action.primary {
+            background: var(--champagne);
+            color: var(--ink);
+        }
+
+        .action:hover {
+            background: transparent;
+            color: var(--champagne);
+        }
+
+        /* EMPTY */
+
+        .empty {
+            min-height: 65vh;
+
+            display: grid;
+            place-items: center;
+
+            text-align: center;
+        }
+
+        .empty-inner {
+            max-width: 550px;
+        }
+
+        .empty h1 {
+            margin-top: 13px;
+
+            font-family: var(--display);
+            font-size: clamp(3rem,6vw,5rem);
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .empty p {
+            margin: 18px auto 28px;
+
+            color: var(--muted);
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 25px 5vw;
+
+            border-top: 1px solid var(--line);
+
+            display: flex;
+            justify-content: space-between;
+
+            color: var(--muted);
+            font-size: .7rem;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 650px) {
+
+            .header {
+                height: 78px;
+                padding: 0 6vw;
+            }
+
+            .brand {
+                font-size: 1.45rem;
+            }
+
+            .back {
+                font-size: .6rem;
+            }
+
+            .page {
+                width: 88vw;
+                margin-top: 55px;
+            }
+
+            .order-top {
+                padding: 22px;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .items {
+                padding: 5px 20px;
+            }
+
+            .item {
+                grid-template-columns: 55px 1fr;
+            }
+
+            .visual {
+                width: 55px;
+                height: 68px;
+            }
+
+            .item-price {
+                grid-column: 2;
+            }
+
+            .total {
+                padding: 22px;
+            }
+
+            .delivery {
+                padding: 22px;
+            }
+
+            .delivery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .delivery-full {
+                grid-column: auto;
+            }
+
+            .timeline {
+                padding: 25px 0;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .step:not(:last-child)::after {
+                top: 20px;
+                left: 50%;
+                width: 1px;
+                height: 30px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 7px;
+            }
+        }
+    </style>
+</head>
+
+<link rel="stylesheet" href="style.css">
+
+<body>
+    
+<div class="custom-cursor">
+  <span></span>
+</div>
+
+
+<header class="header">
+
+    <a class="brand" href="index.html">
+        AURÈLE
+    </a>
+
+    <a class="back" href="index.html#collection">
+        Continue shopping →
+    </a>
+
+</header>
+
+
+<main class="page">
+
+    <!-- ORDER CONTENT -->
+
+    <div id="order-page">
+
+        <section class="hero">
+
+            <div class="eyebrow">
+                Maison de Parfum
+            </div>
+
+            <div class="check">
+                ✓
+            </div>
+
+            <h1>Thank you.</h1>
+
+            <p>
+                Your AURÈLE selection has been received.
+                We will prepare your fragrances with care.
+            </p>
+
+        </section>
+
+
+        <section class="order-card">
+
+            <div class="order-top">
+
+                <div>
+
+                    <div class="order-label">
+                        Order number
+                    </div>
+
+                    <div class="order-id" id="order-id">
+                        —
+                    </div>
+
+                </div>
+
+                <div class="status">
+                    Order Confirmed
+                </div>
+
+            </div>
+
+
+            <div class="items" id="order-items">
+            </div>
+
+
+            <div class="total">
+
+                <span>
+                    Order total
+                </span>
+
+                <strong id="order-total">
+                    Rs 0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- DELIVERY -->
+
+        <section class="delivery">
+
+            <h2>Delivery details</h2>
+
+            <div class="delivery-grid">
+
+                <div>
+                    <div class="delivery-label">
+                        Customer
+                    </div>
+
+                    <div class="delivery-value" id="customer-name">
+                        —
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="delivery-label">
+                        Phone
+                    </div>
+
+                    <div class="delivery-value" id="customer-phone">
+                        —
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="delivery-label">
+                        Email
+                    </div>
+
+                    <div class="delivery-value" id="customer-email">
+                        —
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="delivery-label">
+                        City
+                    </div>
+
+                    <div class="delivery-value" id="customer-city">
+                        —
+                    </div>
+                </div>
+
+
+                <div class="delivery-full">
+
+                    <div class="delivery-label">
+                        Address
+                    </div>
+
+                    <div class="delivery-value" id="customer-address">
+                        —
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="delivery-label">
+                        Payment
+                    </div>
+
+                    <div class="delivery-value" id="payment">
+                        Cash on Delivery
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="delivery-label">
+                        Ordered
+                    </div>
+
+                    <div class="delivery-value" id="order-date">
+                        —
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TIMELINE -->
+
+        <section class="timeline">
+
+            <h2>Your fragrance journey</h2>
+
+            <div class="steps">
+
+                <div class="step active">
+
+                    <div class="dot"></div>
+
+                    <strong>Confirmed</strong>
+
+                    <span>
+                        Order received
+                    </span>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="dot"></div>
+
+                    <strong>Preparing</strong>
+
+                    <span>
+                        Fragrance being prepared
+                    </span>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="dot"></div>
+
+                    <strong>Delivered</strong>
+
+                    <span>
+                        On its way to you
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="actions">
+
+            <a
+                class="action primary"
+                href="index.html#collection"
+            >
+                Explore collection
+            </a>
+
+            <a
+                class="action"
+                href="cart.html"
+            >
+                Return to bag
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- EMPTY -->
+
+    <section class="empty" id="empty-state" hidden>
+
+        <div class="empty-inner">
+
+            <div class="eyebrow">
+                AURÈLE
+            </div>
+
+            <h1>No orders yet.</h1>
+
+            <p>
+                Your fragrance story has not begun yet.
+                Discover a scent from our collection and
+                make your first selection.
+            </p>
+
+            <a
+                class="action primary"
+                href="index.html#collection"
+            >
+                Discover AURÈLE
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <span>
+        © AURÈLE — Maison de Parfum
+    </span>
+
+    <span>
+        Crafted to leave a lasting impression.
+    </span>
+
+</footer>
+
+<script>
+(() => {
+
+    "use strict";
+
+    const ORDERS_KEY = "aurele-orders-v1";
+
+    const $ = (root, id) => root.querySelector("#" + id);
+
+    const money = amount => {
+        return "Rs " + Math.round(Number(amount || 0))
+            .toLocaleString("en-PK");
+    };
+
+
+    // =========================
+    // LOAD ALL SAVED ORDERS
+    // =========================
+
+    function loadOrders() {
+
+        try {
+
+            const raw =
+                localStorage.getItem(ORDERS_KEY);
+
+            if (!raw) return [];
+
+            const orders = JSON.parse(raw);
+
+            return Array.isArray(orders)
+                ? orders
+                : [];
+
+        } catch (error) {
+
+            console.error(
+                "AURÈLE orders error:",
+                error
+            );
+
+            return [];
+        }
+    }
+
+
+    // =========================
+    // FORMAT DATE
+    // =========================
+
+    function formatDate(dateString) {
+
+        if (!dateString) return "—";
+
+        const date =
+            new Date(dateString);
+
+        if (Number.isNaN(date.getTime())) {
+            return "—";
+        }
+
+        return date.toLocaleDateString(
+            "en-PK",
+            {
+                day: "2-digit",
+                month: "long",
+                year: "numeric"
+            }
+        );
+    }
+
+
+    // =========================
+    // FILL ONE ORIGINAL DESIGN
+    // =========================
+
+    function fillOrder(root, order, index) {
+
+        const customer =
+            order.customer || {};
+
+
+        // -------------------------
+        // ORDER NUMBER
+        // -------------------------
+
+        const orderId =
+            $(root, "order-id");
+
+        if (orderId) {
+
+            orderId.textContent =
+                order.id || "AURÈLE ORDER";
+
+        }
+
+
+        // -------------------------
+        // ORDER TOTAL
+        // -------------------------
+
+        const orderTotal =
+            $(root, "order-total");
+
+        if (orderTotal) {
+
+            orderTotal.textContent =
+                money(order.total);
+
+        }
+
+
+        // -------------------------
+        // ORDER LABEL
+        // -------------------------
+
+        const eyebrow =
+            root.querySelector(".eyebrow");
+
+        if (eyebrow) {
+
+            eyebrow.textContent =
+                index === 0
+                    ? "LATEST ORDER"
+                    : "PREVIOUS ORDER";
+
+        }
+
+
+        // -------------------------
+        // CUSTOMER NAME
+        // -------------------------
+
+        const customerName =
+            $(root, "customer-name");
+
+        if (customerName) {
+
+            customerName.textContent =
+                `${customer.firstName || ""} ${customer.lastName || ""}`
+                    .trim() || "—";
+
+        }
+
+
+        // -------------------------
+        // PHONE
+        // -------------------------
+
+        const phone =
+            $(root, "customer-phone");
+
+        if (phone) {
+
+            phone.textContent =
+                customer.phone || "—";
+
+        }
+
+
+        // -------------------------
+        // EMAIL
+        // -------------------------
+
+        const email =
+            $(root, "customer-email");
+
+        if (email) {
+
+            email.textContent =
+                customer.email || "—";
+
+        }
+
+
+        // -------------------------
+        // CITY
+        // -------------------------
+
+        const city =
+            $(root, "customer-city");
+
+        if (city) {
+
+            city.textContent =
+                customer.city || "—";
+
+        }
+
+
+        // -------------------------
+        // ADDRESS
+        // -------------------------
+
+        const address =
+            $(root, "customer-address");
+
+        if (address) {
+
+            const addressParts = [];
+
+            if (customer.address) {
+                addressParts.push(
+                    customer.address
+                );
+            }
+
+            if (customer.postal) {
+                addressParts.push(
+                    customer.postal
+                );
+            }
+
+            address.textContent =
+                addressParts.length
+                    ? addressParts.join(", ")
+                    : "—";
+
+        }
+
+
+        // -------------------------
+        // PAYMENT
+        // -------------------------
+
+        const payment =
+            $(root, "payment");
+
+        if (payment) {
+
+            payment.textContent =
+                customer.payment ||
+                order.payment ||
+                "Cash on Delivery";
+
+        }
+
+
+        // -------------------------
+        // ORDER DATE
+        // -------------------------
+
+        const orderDate =
+            $(root, "order-date");
+
+        if (orderDate) {
+
+            orderDate.textContent =
+                formatDate(
+                    order.createdAt
+                );
+
+        }
+
+
+        // =========================
+        // ORDER ITEMS
+        // =========================
+
+        const itemsContainer =
+            $(root, "order-items");
+
+
+        if (itemsContainer) {
+
+            itemsContainer.replaceChildren();
+
+
+            const items =
+                Array.isArray(order.items)
+                    ? order.items
+                    : [];
+
+
+            items.forEach(item => {
+
+                const row =
+                    document.createElement("article");
+
+                row.className = "item";
+
+
+                const visual =
+                    document.createElement("div");
+
+                visual.className = "visual";
+
+                visual.textContent = "A";
+
+
+                const info =
+                    document.createElement("div");
+
+
+                const name =
+                    document.createElement("h2");
+
+                name.textContent =
+                    item.name ||
+                    "AURÈLE Fragrance";
+
+
+                const detail =
+                    document.createElement("p");
+
+                detail.textContent =
+                    `AURÈLE · Eau de Parfum · Quantity ${Number(item.qty || 0)}`;
+
+
+                info.append(
+                    name,
+                    detail
+                );
+
+
+                const price =
+                    document.createElement("div");
+
+                price.className =
+                    "item-price";
+
+
+                const itemTotal =
+                    Number(item.price || 0) *
+                    Number(item.qty || 0);
+
+
+                price.textContent =
+                    money(itemTotal);
+
+
+                row.append(
+                    visual,
+                    info,
+                    price
+                );
+
+
+                itemsContainer.append(row);
+
+            });
+
+        }
+
+
+        // =========================
+        // STATUS / JOURNEY
+        // =========================
+
+        const status =
+            order.status || "Order Confirmed";
+
+
+        /*
+            Original timeline ko touch nahi
+            kar rahe. Sirf confirmed state
+            active rahegi, exactly original
+            design ki tarah.
+        */
+
+        const confirmed =
+            root.querySelector(
+                ".confirmed"
+            );
+
+        if (confirmed) {
+
+            confirmed.classList.add("active");
+
+        }
+
+
+        // -------------------------
+        // TOTAL / SUBTOTAL
+        // -------------------------
+
+        const subtotal =
+            $(root, "order-subtotal");
+
+        if (subtotal) {
+
+            subtotal.textContent =
+                money(order.subtotal);
+
+        }
+
+
+        const delivery =
+            $(root, "order-delivery");
+
+        if (delivery) {
+
+            delivery.textContent =
+                money(order.delivery);
+
+        }
+
+
+        const total =
+            $(root, "order-total");
+
+        if (total) {
+
+            total.textContent =
+                money(order.total);
+
+        }
+
+    }
+
+
+    // =========================
+    // SHOW ALL ORDERS
+    // =========================
+
+    function renderOrders(orders) {
+
+        const original =
+            document.getElementById(
+                "order-page"
+            );
+
+
+        const empty =
+            document.getElementById(
+                "empty-state"
+            );
+
+
+        if (!original) {
+
+            console.error(
+                "AURÈLE: #order-page not found."
+            );
+
+            return;
+
+        }
+
+
+        if (!orders.length) {
+
+            original.hidden = true;
+
+            if (empty) {
+                empty.hidden = false;
+            }
+
+            return;
+
+        }
+
+
+        if (empty) {
+            empty.hidden = true;
+        }
+
+
+        /*
+            Original order page ko template
+            ki tarah use karenge.
+
+            Pehla order original layout mein.
+            Baqi orders usi layout ki exact
+            copies hongi.
+        */
+
+        const parent =
+            original.parentNode;
+
+
+        // Original ko first order ke liye use karo
+        original.hidden = false;
+
+        fillOrder(
+            original,
+            orders[0],
+            0
+        );
+
+
+        // Purane cloned orders agar hon
+        // to remove karo
+        parent
+            .querySelectorAll(
+                ".aurele-order-copy"
+            )
+            .forEach(copy => {
+                copy.remove();
+            });
+
+
+        // Baqi orders ke liye
+        // EXACT ORIGINAL DESIGN clone karo
+        for (
+            let i = 1;
+            i < orders.length;
+            i++
+        ) {
+
+            const copy =
+                original.cloneNode(true);
+
+
+            copy.classList.add(
+                "aurele-order-copy"
+            );
+
+
+            /*
+                IDs duplicate hone ke bawajood
+                hum scoped querySelector use
+                kar rahe hain, isliye har copy
+                ka apna data fill hoga.
+            */
+
+
+            fillOrder(
+                copy,
+                orders[i],
+                i
+            );
+
+
+            parent.appendChild(copy);
+
+        }
+
+    }
+
+
+    // =========================
+    // START
+    // =========================
+
+    const orders =
+        loadOrders();
+
+
+    console.log(
+        "AURÈLE ALL ORDERS:",
+        orders
+    );
+
+
+    renderOrders(orders);
+
+})();
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

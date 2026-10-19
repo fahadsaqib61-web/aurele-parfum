@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AURÈLE — Maison de Parfum</title>
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+<div class="custom-cursor">
+  <span></span>
+</div>
+
+
+
+<!-- LOADER -->
+<div class="loader" aria-hidden="true">
+  <div class="loader__orb">
+    <div class="loader__glow"></div>
+    <canvas class="loader__canvas"></canvas>
+    <svg class="loader__progress" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="49.5"/>
+      <circle class="fill" cx="50" cy="50" r="49.5" pathLength="1"/>
+    </svg>
+    <div class="loader__orbit-dot"></div>
+    <div class="loader__dash"></div>
+    <div class="loader__brand">
+      <span class="loader__word">Aurèle</span>
+      <span class="loader__sub">Maison de Parfum</span>
+    </div>
+  </div>
+  <span class="loader__count">0</span>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <a href="#" class="nav__logo">Aurèle</a>
+  <nav class="nav__links">
+    <a href="#collection">Collection</a>
+    <a href="#story">Our story</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav__actions">
+    <button class="nav__cart" id="cart-toggle" type="button"
+      aria-label="Open shopping bag" aria-controls="cart-drawer" aria-expanded="false">
+      BAG <span class="nav__cart-count" id="cart-count">0</span>
+      <span class="nav__cart-icon" aria-hidden="true">↗</span>
+    </button>
+    <a href="#collection" class="nav__cta">Shop now</a>
+    <button class="nav__burger" id="menu-toggle" type="button" aria-label="Open menu" aria-controls="menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__image"></div>
+  <div class="hero__content">
+    <h1 class="hero__title">
+      <span class="line"><span class="line__inner">The scent</span></span>
+      <span class="line"><span class="line__inner">you leave behind.</span></span>
+    </h1>
+    <p class="hero__text">Small-batch perfumes made from rare oud, rose and amber.</p>
+    <a href="#collection" class="hero__button">Discover the collection</a>
+  </div>
+  <div class="hero__visual">
+    <div class="hero__ring"></div>
+    <div class="hero__arch"></div>
+    <div class="hero__tag">
+      <span class="hero__tag-name">Oud Noir</span>
+      <span class="hero__tag-note">Oud, leather, dark amber</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stat"><span class="stat__number"><span data-count="15">15</span>+</span><span class="stat__label">Years of perfumery</span></div>
+  <div class="stat"><span class="stat__number"><span data-count="40">40</span>+</span><span class="stat__label">Rare ingredients sourced</span></div>
+  <div class="stat"><span class="stat__number"><span data-count="9">9</span></span><span class="stat__label">Countries of origin</span></div>
+  <div class="stat"><span class="stat__number"><span data-count="12000">12,000</span>+</span><span class="stat__label">Bottles delivered</span></div>
+</section>
+
+<!-- COLLECTION -->
+<section class="collection" id="collection">
+  <div class="collection__head">
+    <h2 class="collection__title">The collection</h2>
+    <p class="collection__intro">Three signature fragrances, made in small batches.</p>
+  </div>
+  <div class="collection__grid">
+    <article class="product" data-product-id="oud-noir">
+      <div class="product__image"><div class="product__photo product__photo--1"></div></div>
+      <h3 class="product__name">Oud Noir</h3>
+      <p class="product__notes">Oud, leather, dark amber</p>
+      <div class="product__buy">
+        <span class="product__price">Rs 66,500</span>
+        <button class="product__button" type="button">Add to bag</button>
+      </div>
+    </article>
+    <article class="product" data-product-id="rose-de-minuit">
+      <div class="product__image"><div class="product__photo product__photo--2"></div></div>
+      <h3 class="product__name">Rose de Minuit</h3>
+      <p class="product__notes">Damask rose, patchouli, musk</p>
+      <div class="product__buy">
+        <span class="product__price">Rs 60,000</span>
+        <button class="product__button" type="button">Add to bag</button>
+      </div>
+    </article>
+    <article class="product" data-product-id="ambre-sacre">
+      <div class="product__image"><div class="product__photo product__photo--3"></div></div>
+      <h3 class="product__name">Ambre Sacré</h3>
+      <p class="product__notes">Amber, vanilla, sandalwood</p>
+      <div class="product__buy">
+        <span class="product__price">Rs 64,000</span>
+        <button class="product__button" type="button">Add to bag</button>
+      </div>
+    </article>
+    
+<article class="product" data-product-id="noir-absolu">
+  <div class="product__image">
+    <div class="product__photo product__photo--4"></div>
+  </div>
+  <h3 class="product__name">Noir Absolu</h3>
+  <p class="product__notes">Black pepper, oud, smoky woods</p>
+  <div class="product__buy">
+    <span class="product__price">Rs 68,000</span>
+    <button class="product__button" type="button">Add to bag</button>
+  </div>
+</article>
+
+<article class="product" data-product-id="rose-imperial">
+  <div class="product__image">
+    <div class="product__photo product__photo--5"></div>
+  </div>
+  <h3 class="product__name">Rose Impérial</h3>
+  <p class="product__notes">Rose petals, soft musk, amber</p>
+  <div class="product__buy">
+    <span class="product__price">Rs 62,500</span>
+    <button class="product__button" type="button">Add to bag</button>
+  </div>
+</article>
+
+<article class="product" data-product-id="silver-eclat">
+  <div class="product__image">
+    <div class="product__photo product__photo--6"></div>
+  </div>
+  <h3 class="product__name">Silver Éclat</h3>
+  <p class="product__notes">Bergamot, cedar, fresh musk</p>
+  <div class="product__buy">
+    <span class="product__price">Rs 59,500</span>
+    <button class="product__button" type="button">Add to bag</button>
+  </div>
+</article>
+
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="ingredients" id="ingredients">
+  <div class="ingredients__head" data-reveal>
+    <span class="section-eyebrow">The raw materials</span>
+    <h2 class="ingredients__title">Three ingredients,<br>chosen with patience.</h2>
+  </div>
+  <div class="ingredients__grid">
+    <article class="ing ing--oud" data-reveal style="--d:0ms">
+      <span class="ing__num">01</span>
+      <div class="ing__body">
+        <h3 class="ing__name">Oud</h3>
+        <p class="ing__origin">Assam, India</p>
+        <p class="ing__text">Heartwood of the agarwood tree, aged for years until it turns dark, smoky and resinous.</p>
+        <span class="ing__line"></span>
+      </div>
+    </article>
+    <article class="ing ing--rose" data-reveal style="--d:140ms">
+      <span class="ing__num">02</span>
+      <div class="ing__body">
+        <h3 class="ing__name">Damask Rose</h3>
+        <p class="ing__origin">Taif, Saudi Arabia</p>
+        <p class="ing__text">Picked by hand before sunrise, when each petal holds the most oil and the deepest scent.</p>
+        <span class="ing__line"></span>
+      </div>
+    </article>
+    <article class="ing ing--amber" data-reveal style="--d:280ms">
+      <span class="ing__num">03</span>
+      <div class="ing__body">
+        <h3 class="ing__name">Amber</h3>
+        <p class="ing__origin">Andalusia, Spain</p>
+        <p class="ing__text">A sticky resin warmed slowly into a golden, honeyed base that lingers on skin for hours.</p>
+        <span class="ing__line"></span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <div class="marquee__group"><span>Oud</span><i>✦</i><span>Rose</span><i>✦</i><span>Amber</span><i>✦</i><span>Musk</span><i>✦</i><span>Sandalwood</span><i>✦</i></div>
+    <div class="marquee__group"><span>Oud</span><i>✦</i><span>Rose</span><i>✦</i><span>Amber</span><i>✦</i><span>Musk</span><i>✦</i><span>Sandalwood</span><i>✦</i></div>
+    <div class="marquee__group"><span>Oud</span><i>✦</i><span>Rose</span><i>✦</i><span>Amber</span><i>✦</i><span>Musk</span><i>✦</i><span>Sandalwood</span><i>✦</i></div>
+    <div class="marquee__group"><span>Oud</span><i>✦</i><span>Rose</span><i>✦</i><span>Amber</span><i>✦</i><span>Musk</span><i>✦</i><span>Sandalwood</span><i>✦</i></div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="story__media">
+    <div class="story__frame"></div>
+    <div class="story__image"></div>
+  </div>
+  <div class="story__content">
+    <h2 class="story__title">Made slowly,<br>on purpose.</h2>
+    <p class="story__text">Every Aurèle fragrance starts with the raw material: oud aged for years, roses picked at dawn, amber resin chosen by hand.</p>
+    <p class="story__text">We blend in small batches and let each one rest before it is bottled, so the scent settles into something deeper than the first spray.</p>
+    <a href="#collection" class="story__link">Shop the collection</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact__intro">
+    <span class="contact__eyebrow">Contact</span>
+    <h2 class="contact__title">Find your<br>signature scent.</h2>
+    <p class="contact__text">Not sure where to begin? Tell us what you love and we will suggest a fragrance.</p>
+    <ul class="contact__list">
+      <li><span>Email</span>hello@aurele-parfum.com</li>
+      <li><span>Phone</span>+92 300 0000000</li>
+      <li><span>Atelier</span>Suite 12, Zamzama Boulevard, DHA Phase 5, Karachi</li>
+    </ul>
+  </div>
+  <form class="contact__form" id="contact-form" novalidate>
+    <label>Name<input type="text" name="name" autocomplete="name" required></label>
+    <label>Email<input type="email" name="email" autocomplete="email" required></label>
+    <label>Message<textarea name="message" rows="4" required></textarea></label>
+    <button class="contact__send" type="submit">Send message</button>
+    <p class="contact__status" id="contact-status" role="status"></p>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__brand">
+    <a href="#" class="footer__logo">Aurèle</a>
+    <p>Small-batch perfumes made from rare oud, rose and amber.</p>
+  </div>
+  <div class="footer__col">
+    <h4>Explore</h4>
+    <a href="#collection">Collection</a>
+    <a href="#story">Our story</a>
+    <a href="cart.html">Shopping bag</a>
+  </div>
+  <div class="footer__col">
+    <h4>Follow</h4>
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+  </div>
+  <p class="footer__legal">© 2026 Aurèle — Maison de Parfum. All rights reserved.</p>
+</footer>
+
+<!-- MOBILE MENU -->
+<div class="menu" id="menu" aria-hidden="true" inert data-lenis-prevent>
+  <button class="menu__close" id="menu-close" type="button" aria-label="Close menu">×</button>
+  <nav class="menu__links">
+    <a href="#collection" style="--i:1">Collection</a>
+    <a href="#story" style="--i:2">Our story</a>
+    <a href="#contact" style="--i:3">Contact</a>
+  </nav>
+  <p class="menu__note">Aurèle — Maison de Parfum</p>
+</div>
+
+<!-- SHOPPING BAG DRAWER -->
+<div class="cart-overlay" id="cart-overlay" aria-hidden="true" data-lenis-prevent></div>
+
+<aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true"
+       aria-labelledby="cart-title" aria-hidden="true" inert data-lenis-prevent>
+  <div class="cart-drawer__head">
+    <div>
+      <span class="cart-eyebrow">THE AURÈLE EXPERIENCE</span>
+      <h2 id="cart-title">Your Bag<span class="cart-title-dot">.</span></h2>
+    </div>
+    <button class="cart-close" id="cart-close" type="button" aria-label="Close shopping bag">×</button>
+  </div>
+  <p class="cart-intro">Exceptional fragrance, chosen by you.</p>
+  <div class="cart-items" id="cart-items" aria-live="polite"></div>
+  <div class="cart-empty" id="cart-empty">
+    <span class="cart-empty__mark">A</span>
+    <h3>A little space for luxury.</h3>
+    <p>Your bag is waiting for its first signature scent.</p>
+    <button type="button" class="cart-continue" id="cart-continue">EXPLORE THE COLLECTION <span>↗</span></button>
+  </div>
+  <div class="cart-summary" id="cart-summary" hidden>
+    <div class="cart-summary__line"><span>Subtotal</span><strong id="cart-subtotal">Rs 0</strong></div>
+    <p class="cart-summary__note">Shipping and taxes, if applicable, are calculated at checkout.</p>
+    <button class="cart-checkout" id="cart-checkout" type="button"><span>PROCEED TO CHECKOUT</span><span>↗</span></button>
+    <a class="cart-viewbag" href="cart.html">VIEW FULL BAG</a>
+    <p class="cart-secure">CRAFTED WITH INTENTION · AURÈLE PARFUM</p>
+  </div>
+</aside>
+<div class="cart-toast" id="cart-toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
